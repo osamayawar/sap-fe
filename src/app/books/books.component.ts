@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -11,16 +11,12 @@ export class BooksComponent implements OnInit {
 	constructor(private httpClient: HttpClient) { }
 
   ngOnInit() {
-
+    this.getListOfBooks();
   }
 
-	ngAfterViewInit(): void {
-		this.getListOfBooks();
-	}
-
-  	private getListOfBooks() {
-    	this.httpClient.get('/assets/books.json').subscribe(listOfBooks => {
-          this.books.push(listOfBooks);
-    	});
-  	}
+  private getListOfBooks() {
+    this.httpClient.get('/assets/books.json').subscribe(listOfBooks => {
+        this.books.push(listOfBooks);
+    });
+  }
 }
