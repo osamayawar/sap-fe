@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'sap-fe-interviews';
+  selectedSortingOption = "";
+
+  setSelectedSortingOption(sortingOption) {
+    this.selectedSortingOption = sortingOption;
+  }
+
 }

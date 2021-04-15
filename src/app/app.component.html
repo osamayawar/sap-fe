@@ -1,1 +1,2 @@
-<app-books></app-books>
+<app-sorting (onOptionSelected)="setSelectedSortingOption($event)"></app-sorting>
+<app-books [selectedSortingOption]="selectedSortingOption"></app-books>

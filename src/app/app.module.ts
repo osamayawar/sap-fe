@@ -7,19 +7,23 @@ import { BooksComponent } from './books/books.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { TextCharLimit } from './pipes/text-char-limit.pipe';
+import { MatSelectModule } from '@angular/material/select';
+import { SortingComponent } from './sorting/sorting.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     BooksComponent,
-    TextCharLimit
+    TextCharLimit,
+    SortingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
