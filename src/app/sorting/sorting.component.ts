@@ -7,18 +7,18 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./sorting.component.scss']
 })
 export class SortingComponent implements OnInit {
-  sortingOptions: String[] = ["Title A-Z", "Title Z-A", "Votes Asc", "Votes Desc"];
+  sortingOptions: string[] = ['Title A-Z', 'Title Z-A', 'Votes Asc', 'Votes Desc'];
 
-  @Output() onOptionSelected: EventEmitter<any> = new EventEmitter();
+  @Output() optionSelected: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onSelectionChange(option) {
-    if(option) {
-      this.onOptionSelected.emit(option);
+  onSelectionChange(option): void {
+    if (option) {
+      this.optionSelected.emit(option);
     }
   }
 
