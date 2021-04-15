@@ -4,7 +4,7 @@ import { FormControl } from '@angular/forms';
 @Component({
   selector: 'app-sorting',
   templateUrl: './sorting.component.html',
-  styleUrls: ['./sorting.component.less']
+  styleUrls: ['./sorting.component.scss']
 })
 export class SortingComponent implements OnInit {
   sortingOptions: String[] = ["Title A-Z", "Title Z-A", "Votes Asc", "Votes Desc"];

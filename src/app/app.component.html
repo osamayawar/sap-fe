@@ -1,2 +1,16 @@
-<app-sorting (onOptionSelected)="setSelectedSortingOption($event)"></app-sorting>
-<app-books [selectedSortingOption]="selectedSortingOption"></app-books>
+<div class="container-fluid navbar-wrapper">
+  <nav class="navbar">
+    <span class="navbar-brand mb-0 h1">The Book Store</span>
+  </nav>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-2 offset-md-9">
+      <app-sorting (onOptionSelected)="setSelectedSortingOption($event)"></app-sorting>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <app-books [selectedSortingOption]="selectedSortingOption"></app-books>
+  </div>
+</div>
