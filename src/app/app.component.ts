@@ -13,7 +13,6 @@ export class AppComponent {
 
   setListOfBooks(books) {
     if(books.length > 0) {
-      //books[0].push({"category": "All Categories"})
       this.books = books[0];
 
     }
