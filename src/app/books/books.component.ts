@@ -1,4 +1,4 @@
-import { Component, OnInit,  Input, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, OnInit,  Input, SimpleChanges, OnChanges, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -7,8 +7,12 @@ import { HttpClient } from '@angular/common/http';
     styleUrls: ['./books.component.scss']
 })
 export class BooksComponent implements OnInit, OnChanges {
+  staticBooksList = [];
   books = [];
+  bookCategory: string = null;
   @Input() selectedSortingOption: string;
+  @Input() selectedBookCategory: string;
+  @Output() listOfBooks: EventEmitter<any> = new EventEmitter();
 
   constructor(private httpClient: HttpClient) { }
 
@@ -17,18 +21,30 @@ export class BooksComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.selectedSortingOption.currentValue) {
+    if (changes.selectedSortingOption && changes.selectedSortingOption.currentValue) {
       this.sortBooks(changes.selectedSortingOption.currentValue.value);
+    }
+
+    if (changes.selectedBookCategory && changes.selectedBookCategory.currentValue) {
+      this.showBooksForSelectedCategory(changes.selectedBookCategory.currentValue);
     }
   }
 
   private getListOfBooks(): void {
     this.httpClient.get('/assets/books.json').subscribe(listOfBooks => {
         this.books.push(listOfBooks);
+        this.staticBooksList = this.books; //Keep the original copy as the book array may change while selecting different category
+        this.listOfBooks.emit(this.books); //emit the list of books to app component
         this.sortBooks(null);
     });
   }
 
+  /**
+   *
+   * @param sortingOption
+   * Sort the books as per users selection.
+   * The method offers sorty by Title (A-Z/Z-A) and number of votes
+   */
   private sortBooks(sortingOption): void {
     this.books[0].sort((a, b) => {
       const firstTitle = a.title.toUpperCase();
@@ -50,5 +66,23 @@ export class BooksComponent implements OnInit, OnChanges {
           break;
       }
     });
+  }
+
+  /**
+   *
+   * @param selectedCategory
+   * This method is used to show the list of books that falls under the selected category
+   */
+  private showBooksForSelectedCategory(selectedCategory) {
+    let listOfBooks = this.staticBooksList;
+    this.books = [];
+    if(listOfBooks.length > 0) {
+      listOfBooks[0].forEach(book => {
+        if(book.category === selectedCategory) {
+          this.books[0] = [];
+          this.books[0].push(book);
+        }
+      });
+    }
   }
 }
