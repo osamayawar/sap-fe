@@ -11,10 +11,9 @@ export class AppComponent {
   books = [];
   selectedBookCategory;
 
-  setListOfBooks(books) {
-    if(books.length > 0) {
+  setListOfBooks(books): void {
+    if (books.length > 0) {
       this.books = books[0];
-
     }
   }
 
@@ -22,7 +21,7 @@ export class AppComponent {
     this.selectedSortingOption = sortingOption;
   }
 
-  setSelectedCategory(category) {
+  setSelectedCategory(category): void {
     this.selectedBookCategory = category;
   }
 

@@ -33,8 +33,8 @@ export class BooksComponent implements OnInit, OnChanges {
   private getListOfBooks(): void {
     this.httpClient.get('/assets/books.json').subscribe(listOfBooks => {
         this.books.push(listOfBooks);
-        this.staticBooksList = this.books; //Keep the original copy as the book array may change while selecting different category
-        this.listOfBooks.emit(this.books); //emit the list of books to app component
+        this.staticBooksList = this.books; // Keep the original copy as the book array may change while selecting different category
+        this.listOfBooks.emit(this.books); // emit the list of books to app component
         this.sortBooks(null);
     });
   }
@@ -73,12 +73,12 @@ export class BooksComponent implements OnInit, OnChanges {
    * @param selectedCategory
    * This method is used to show the list of books that falls under the selected category
    */
-  private showBooksForSelectedCategory(selectedCategory) {
-    let listOfBooks = this.staticBooksList;
+  private showBooksForSelectedCategory(selectedCategory): void {
+    const listOfBooks = this.staticBooksList;
     this.books = [];
-    if(listOfBooks.length > 0) {
+    if (listOfBooks.length > 0) {
       listOfBooks[0].forEach(book => {
-        if(book.category === selectedCategory) {
+        if (book.category === selectedCategory) {
           this.books[0] = [];
           this.books[0].push(book);
         }
