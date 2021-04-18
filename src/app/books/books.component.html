@@ -1,0 +1,26 @@
+<div class="container">
+  <div *ngIf="books.length > 0" class="row">
+    <div *ngFor="let book of books[0]" class="col-md-4 book-details-container">
+
+      <div class="row justify-content-center">
+        <div class="book-img-container">
+          <a class="book-href" href="{{book.url}}" target="_blank">
+            <img class="book-img" [src]=book.image alt="{{book.title}}">
+          </a>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <a class="book-href" href="{{book.url}}" target="_blank"> <b>{{book.title | textCharLimit:[20]}}</b> </a>
+      </div>
+
+      <div class="row justify-content-center">by {{book.author | textCharLimit:[20]}}</div>
+
+      <div class="book-category row justify-content-center">({{book.category}})</div>
+
+      <div class="row justify-content-center">
+        <i class="fa fa-star"></i> <span class="votes">{{book.votes}}</span>
+      </div>
+    </div>
+  </div>
+</div>

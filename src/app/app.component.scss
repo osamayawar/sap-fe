@@ -1,0 +1,25 @@
+.navbar-wrapper {
+  width: 100%;
+  background: #ff8d00;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.dropdown-menu {
+  background-color: #f08c33;
+}
+
+.dropdown-item {
+  color: #fff;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+.dropdown-item:hover {
+  background-color: #f5aa67;
+  color: fff;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #fff;
+}

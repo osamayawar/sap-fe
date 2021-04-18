@@ -1,0 +1,6 @@
+<mat-form-field appearance="fill">
+  <mat-label>Sort Books</mat-label>
+  <mat-select *ngIf="sortingOptions.length > 0" (selectionChange)="onSelectionChange($event)">
+    <mat-option *ngFor="let option of sortingOptions" [value]="option">{{option}}</mat-option>
+  </mat-select>
+</mat-form-field>
